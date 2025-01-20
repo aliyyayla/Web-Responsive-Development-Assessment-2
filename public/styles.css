@@ -1,0 +1,592 @@
+/* */
+@font-face {
+    font-family: 'MiCustomFont'; /* my font name */
+    src: url('Giaza Font/Giaza.otf') format('truetype'); /* for my h1 */
+}
+
+@font-face {
+    font-family: 'MiCustomFont2'; /* font name */
+    src: url('Inter/static/Inter_24pt-Light.ttf') format('truetype'); /* for my h2 */
+}
+
+@font-face {
+    font-family: 'MiCustomFont3'; /* font name */
+    src: url('Inter/static/Inter_24pt-ExtraLight.ttf') format('truetype'); /* for my h3 and h4 */
+}
+
+/* for the Default */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* for the Default */
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: white;
+}
+
+/* for styling the hamburder menu */
+.hamburger {
+    display: none; /* to hide the menu */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* for the hamburger span display */
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Navbar display  */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    opacity: 0;
+    transition: all 1s;
+}
+
+/* nav-links display */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* nav-links a */
+.nav-links a {
+    font-family: 'MiCustomFont';
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 34px;
+    transition: .5s;
+    transition: transform .5s;
+    transform-origin: left;
+}
+
+/* nav-links after display */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom:-6px;
+    width: 100%;
+    height:3px;
+    background: #5A5353;
+    border-radius: 5px;
+    transform: scaleX(0);
+}
+
+/* nav-links for the after hover */
+.nav-links a:hover::after{
+    transform: scaleX(1);
+}
+
+ /* id for the logo */
+#logo {
+    max-width: 150px; 
+    height: auto;
+}
+
+/* for the login button (mostly from chatgpt but some are mines) */
+a.login-button {
+    font-family: 'MiCustomFont2';
+    border: 2px solid #fff;
+    border-radius: 6px;
+    padding: 10px 20px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+a.login-button:hover {
+    background-color: #5A5353;
+    color: #fff;
+    transform: scale(1.05); /* Slight enlargement */
+}
+
+/* Active state for the Log In button */
+a.login-button:active {
+    background-color: #2a2a2a; /* Even darker shade when clicked */
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+
+/* this is for the hero display */
+.hero {
+    display: flex;
+    flex-wrap; wrap;
+    align-items: center;
+    justify-content: space-between
+    padding: 2rem;
+    background-color: #ffff;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    opacity: 0; /* for a smooth scroll animation */
+    transition: all 1s;
+}
+
+/* for the content inside your hero */
+.hero-content {
+    flex: 1;
+    padding: 4rem;
+}
+
+/* hero-content's h1 */
+.hero-content h1 {
+    font-family: 'MiCustomFont';
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    padding-left: 80px;
+}
+
+/* hero-content's paragraph */
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-left: 80px;
+    font-family:'MiCustomFont2';
+    text-align: justify;
+}
+
+/* hero-image display */
+.hero-image {
+    flex: 1; 
+    background-image: url('Assets/mountain.jpg');
+    background-size: contain; /* Ensures the image fits within the container */
+    background-position: center; /* Positions the image to the right column */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    padding: 30px; /* Adds padding around the image */
+    width: 300px; /* Adjusted to make the image larger */
+    height: 500px; /* Maintains a square size for consistency */
+}
+
+/* This is the content, insight and information section */
+.content, .insights, .information {
+    padding: 2rem;
+    background: transparent;
+    margin-bottom: 2rem;
+    text-align: center;
+    opacity: 0; /* for a smooth scroll animation */
+    transition: all 1s;
+}
+
+/* This is the content, insight and information section's h1 */
+h2 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-family: 'MiCustomFont'; 
+}
+
+/* this is the card display section */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px; 
+    width: 340px; 
+    height: 600px; 
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center-align items */
+    justify-content: flex-start; /* Align content at the top */
+    opacity: 0; 
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, all 1s; /* for a smooth animation in coded in javascript */
+    
+}
+
+/* card-container display */
+.card-container {
+    margin: 0 auto;
+    padding: 20px; /* Space around the container */
+    display: flex;
+    justify-content: center; /* Center the cards horizontally */
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    gap: 20px; /* Space between cards */
+    background: transparent;
+}
+
+
+.card:hover {
+    transform: translateY(-10px); /* Slight hover effect */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Hidden button by default */
+.see-more-btn {
+    position: absolute;
+    bottom: -50px; /* Initially hidden below the card */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0; /* Fully hidden */
+    transition: background-color 0.3s ease, bottom 0.3s ease, opacity 0.3s ease; /* Smooth animation */
+}
+
+/* Show button on hover */
+.card:hover .see-more-btn {
+    bottom: 20px; /* Moves button up */
+    opacity: 1; /* Fully visible */
+}
+
+/* Button hover effect */
+.see-more-btn:hover {
+    background-color: #555;
+}
+
+/* for card images */
+.card img {
+    width: 100%; /* Full width of the card */
+    height: 300px; /* Set a fixed height */
+    border-radius: 8px; /* Rounded corners for the image */
+    object-fit: cover; /* Ensure image is scaled and cropped properly */
+    margin-bottom: 15px; /* Add space below the image */
+}
+
+/* for the card's h3 */
+.card h3 {
+    font-size: 1.4rem; /* Adjust title size */
+    margin-bottom: 10px; /* Add spacing below the title */
+    text-align: center; /* starts at the left. */
+    margin: 0;
+
+}
+
+/* for the card's paragraph */
+.card p {
+    font-family: 'MiCustomFont3';
+    font-size: 0.9rem; /* Adjust paragraph size */
+    color: #555;
+    text-align: start; /* Center-align content */
+    margin: 0;
+    line-height: 1.5;
+    overflow: hidden; /* Prevent content overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}
+
+/* card's h4 */
+.card h4 {
+    margin-bottom: 0.5rem;
+    font-size: .8rem;
+    font-family: 'MiCustomFont3';
+    text-align: center;
+}
+
+/* services display section */
+.services {
+    display: flex;
+    flex-wrap; wrap;
+    align-items: center;
+    justify-content: space-between
+    padding: 2rem;
+    background-color: #ffff;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: all 1s;
+}
+
+/* services- content display */
+.services-content {
+    flex: 1;
+    padding: 4rem;
+}
+
+/* services- content's h2 */
+.services-content h2 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-family: 'MiCustomFont'; 
+}
+
+/* services -content paragraph */
+.services-content p {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    font-family:'MiCustomFont2';
+    text-align: center;
+}
+
+/* other dispaly section */
+.other {
+    display: flex;
+    flex-wrap; wrap;
+    align-items: center;
+    justify-content: space-between
+    padding: 2rem;
+    background-color: #ffff;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: all 1s;
+}
+
+/* this is for the other-content section */
+.other-content {
+    flex: 1;
+    padding: 4rem;
+}
+
+/* other-content's h2 */
+.other-content h2 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-family: 'MiCustomFont'; 
+}
+
+/* other content's paragraph */
+.other-content p {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    font-family:'MiCustomFont2';
+    text-align: center;
+    padding-bottom: 1.2rem;
+}
+
+/* footer display section */
+footer {
+    font-family: 'MiCustomFont';
+    text-align: center;
+    padding: 1rem;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+/* paragrapth of the footer */
+footer p {
+    font-family: 'MiCustomFont2';
+    font-size: 1.2rem;
+}
+
+/* footer's navigation */
+.footer-nav {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* footer's navigation a tag */
+.footer-nav a {
+    font-family: 'MiCustomFont3';
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 34px;
+    transition: .5s;
+    transition: transform .5s;
+    transform-origin: left;
+}
+
+
+/* Close Button */
+.close-btn {
+    display: none; /* Hidden by default */
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* FOR PHONE DEVICE */
+@media (max-width: 768px) {
+
+    /* default */
+    body {
+        line-height: 1.4;
+        padding: 0 1rem; /* to add some padding for smaller screens */
+    }
+
+    /* for the hamburger menu style */
+    .hamburger {
+        display: flex; /* this is to show the hamburger menu */
+    }
+
+    /*  nav- links display */
+    .nav-links {
+        display: none; /* to hide the nav links */
+        flex-direction: column;
+        gap: 1rem;
+        background: white;
+        position: absolute;
+        top: 60px; 
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* nav-links to activate */
+    .nav-links.active {
+        display: flex; /* Show nav links when active */
+    }
+
+    /* for the navbar display */
+    .navbar {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 1rem 2rem;
+        background: white;
+        border-bottom: 1px solid #ddd;
+        font-family: 'MiCustomFont'; 
+    }
+
+    /* logo display */
+    #logo {
+        max-width: 150px; /* the default logo size */
+        height: auto;
+        cursor: pointer; /* to make the logo clickable */
+    }
+    
+    /* for the close button insdie the menu */
+    .close-btn {
+        display: block; 
+    }
+
+    /* the hero section */
+    .hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: start; /* Center the content inside */
+        padding: 1rem;
+        background-image: url('Assets/mountain.jpg'); /* Background image path */
+        background-size: cover; /* Make the image cover the container */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        height: 500px; /* Set the height for the hero section */
+        color: #333; /* Adjust text color for contrast */
+    }
+    
+    /* hero- content section */
+    .hero-content {
+        text-align: center; 
+        color: #333; 
+    }
+    
+    /* hero's image display */
+    .hero-image {
+        background:transparent; /* to remove the excess image */
+    }
+
+    /* the hero- content's h1 */
+    .hero-content h1 {
+        font-family: 'MiCustomFont';
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* hero- content's paragraph */
+    .hero-content p {
+        font-family: 'MiCustomFont2';
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: white;
+    }
+    
+    /* card container section */
+    .card-container {
+        flex-direction: column; /* for stacking the cards vertically */
+        gap: 20px; /* Maintain spacing between cards */
+        padding: 1rem;
+    }
+
+    /* the card display section */
+    .card {
+        width: 100%; /* for a full width for mobile */
+        height: auto; /* for a flexible height */
+        padding: 1rem; 
+    }
+
+    /* card image display */
+    .card img {
+        height: 250px; 
+        
+    }
+
+    /* for the card's h3 */
+    .card h3 {
+        font-size: 0.9rem; /* the right amount of size for a mobile */
+    }
+
+    /* for the card's paragraph */
+    .card p {
+        font-size: 0.9rem; /* for a smaller text for mobile */
+    }
+
+    /* services section */
+    .services {
+        flex-direction: column; /* to stack vertically */
+        text-align: center;
+        padding: 2rem 1rem; /* for the mobiles padding */
+    }
+
+    /* services-content padding */
+    .services-content {
+        padding: 1rem;
+    }
+
+    /* for the h2 in services-content */
+    .services-content h2 {
+        font-size: 2rem; /* to reduce the font size */
+    }
+
+    /* for the paragraph in services-content */
+    .services-content p {
+        font-size: 1rem; /* for smaller paragraph font */
+    }
+
+    /* footer display adjustments */
+    footer {
+        font-size: 1rem; 
+        padding: 1rem;
+    }
+
+    /* footer-nav section */
+    .footer-nav {
+        flex-direction: column; /* to stack the footer links */
+        gap: 0.5rem; /* to reduce the spacing */
+    }
+
+    /* for the footer- nav's paragraph */
+    .footer-nav p {
+        font-size: .5rem; /* for a smaller footer link size */
+    }
+}
+
+/* to show the scroll animation display in the website */
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
